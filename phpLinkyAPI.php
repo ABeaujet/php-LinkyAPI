@@ -35,6 +35,8 @@ class Linky{
         $end = count($data);
         for($i=$end-1; $i>=$end-48; $i--)
         {
+            if( $data[$i]['valeur'] === -1 )
+                continue;
             $valeur = $data[$i]['valeur'].'kW';
 
             $thisHour = clone $startHour;
@@ -72,6 +74,8 @@ class Linky{
         $data = $result['graphe']['data'];
         foreach ($data as $day)
         {
+            if( $day['valeur'] === -1 )
+                continue;
             $valeur = $day['valeur'];
             if ($valeur == -2) $valeur = null;
             else $valeur .= 'kWh';
@@ -103,6 +107,8 @@ class Linky{
         $data = $result['graphe']['data'];
         foreach ($data as $month)
         {
+            if( $month['valeur'] === -1 )
+                continue;
             $valeur = $month['valeur'];
             if ($valeur == -2) $valeur = null;
             else $valeur .= 'kW';
@@ -137,6 +143,8 @@ class Linky{
         $fromYear->modify('- '.$c.' year');
         foreach ($data as $year)
         {
+            if( $year['valeur'] === -1 )
+                continue;
             $valeur = $year['valeur'];
             if ($valeur == -2) $valeur = null;
             else $valeur .= 'kW';
